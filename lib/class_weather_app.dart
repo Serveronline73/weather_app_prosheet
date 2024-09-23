@@ -1,13 +1,23 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:weather_app_prosheet/weather_data.dart';
+import 'package:weather_app_prosheet/weather_repository.dart';
 
 class WeatherApp extends StatelessWidget {
-  const WeatherApp({super.key, required this.city});
+  const WeatherApp({
+    super.key,
+    required this.repository,
+  });
 
-  final WeatherData city;
+  final WeatherRepository repository;
 
   @override
   Widget build(BuildContext context) {
+    final WeatherData city = repository.getWeather();
+    final double temperature = city.temperature;
+    final String weatherCondition = city.weatherCondition;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -27,18 +37,9 @@ class WeatherApp extends StatelessWidget {
                   fontSize: 24,
                   fontWeight: FontWeight.bold),
             ),
-
-            // style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //),
             Text(city.city),
-            Text("Die Temperatur beträgt, ${city.temperature} Grad°"),
-            Text("Das Wetter wird, ${city.weatherCondition}"),
-            // Text(
-            //   '23,5 Grad°, Sonnig',
-            //),
-            //Text('Dortmund',
-            //  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            // Text('22,2 Grad°, Sonnig'),
+            Text("Die Temparatur beträgt: ${city.temperature}°C"),
+            Text("Wetter: ${city.weatherCondition}"),
           ],
         ),
       ),

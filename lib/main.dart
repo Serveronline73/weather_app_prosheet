@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main() {
+  final WeatherData city = WeatherData(
+      city: "Bochum", temperature: 23.5, weatherCondition: "Sonnig");
   runApp(const MainApp());
 }
 
@@ -44,14 +46,25 @@ class WeatherApp extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
-              '23 Grad°, Sonnig',
+              '23,5 Grad°, Sonnig',
             ),
             Text('Dortmund',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Text('22 Grad°, Sonnig'),
+            Text('22,2 Grad°, Sonnig'),
           ],
         ),
       ),
     );
   }
+}
+
+class WeatherData {
+  final String city;
+  final double temperature;
+  final String weatherCondition;
+
+  WeatherData(
+      {required this.city,
+      required this.temperature,
+      required this.weatherCondition});
 }

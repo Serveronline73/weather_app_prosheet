@@ -1,70 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_prosheet/class_weather_app.dart';
+import 'package:weather_app_prosheet/weather_data.dart';
 
 void main() {
   final WeatherData city = WeatherData(
       city: "Bochum", temperature: 23.5, weatherCondition: "Sonnig");
-  runApp(const MainApp());
+  runApp(MainApp(city: city));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({super.key, required this.city});
+
+  final WeatherData city;
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: WeatherApp(),
+    return MaterialApp(
+      home: WeatherApp(city: city),
     );
   }
-}
-
-class WeatherApp extends StatelessWidget {
-  const WeatherApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Weather App",
-          style: TextStyle(
-              color: Colors.green, fontSize: 28, fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Wilkommen zur Weather App!',
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'Bochum',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '23,5 Grad°, Sonnig',
-            ),
-            Text('Dortmund',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Text('22,2 Grad°, Sonnig'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class WeatherData {
-  final String city;
-  final double temperature;
-  final String weatherCondition;
-
-  WeatherData(
-      {required this.city,
-      required this.temperature,
-      required this.weatherCondition});
 }

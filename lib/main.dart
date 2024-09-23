@@ -24,6 +24,8 @@ class WeatherApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Weather App"),
         ),
-        body: Container());
+        body: Container(
+          child: const Text('Wilkommen zu r Weather App!'),
+        ));
   }
 }

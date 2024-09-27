@@ -37,7 +37,10 @@ class WeatherApp extends StatelessWidget {
                   fontSize: 24,
                   fontWeight: FontWeight.bold),
             ),
-            Text(city.city),
+            Text(
+              city.city,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             Text("Die Temparatur beträgt: ${city.temperature}°C"),
             Text("Wetter: ${city.weatherCondition}"),
           ],
